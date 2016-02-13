@@ -4,23 +4,66 @@
     xmlns:local="using:MetroDict.Common">
 
 	<!-- brushes -->
-	<SolidColorBrush x:Key="Background" Color="White" />
+	<SolidColorBrush x:Key="Background" Color="#2A2F2F" />
+	<SolidColorBrush x:Key="ButtonBackground" Color="#9E2B20" />
+	<SolidColorBrush x:Key="TextColorAlt" Color="#ACA580" />
+	<SolidColorBrush x:Key="ButtonBorder" Color="#C58079" />
 
+	<!-- base styles -->
+	<Style TargetType="Control" x:Key="ICControl">
+		<Setter Property="FontFamily" Value="Tahoma" />
+		<Setter Property="FontSize" Value="15" />
+	</Style>
+
+	<Style TargetType="Control" x:Key="ICBorderedControl" BasedOn="{StaticResource ICControl}">
+		<Setter Property="BorderThickness" Value="2"/>
+		<Setter Property="BorderBrush" Value="{StaticResource ButtonBorder}" />
+	</Style>
+	
+	<!-- control styles-->
 	<Style TargetType="TextBlock" x:Key="ICText">
-		<Setter Property="FontFamily" Value="Helvetica"></Setter>
-		<Setter Property="FontSize" Value="15"></Setter>
+		<Setter Property="FontFamily" Value="Tahoma" />
+		<Setter Property="FontSize" Value="15"/>
+		<Setter Property="Foreground" Value="White" />
 	</Style>
 
 	<Style TargetType="TextBlock" x:Key="ICColoredText" BasedOn="{StaticResource MDText}">
-		<Setter Property="Foreground" Value="Chartreuse"></Setter>
+		<Setter Property="Foreground" Value="{StaticResource TextColorAlt}" />
 	</Style>
 
-	<Style x:Key="ICButton" TargetType="Button">
-		<Setter Property="MinWidth" Value="80" />
+	<Style TargetType="TextBox" x:Key="ICTextBox" BasedOn="{StaticResource ICBorderedControl}">
+		<Setter Property="Margin" Value="5" />
+	</Style>
+
+	<!-- button -->
+	<Style TargetType="Button" x:Key="ICDialogButton" BasedOn="{StaticResource ICBorderedControl}">
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="Background" Value="{StaticResource ButtonBackground}"/>
+		<Setter Property="Margin" Value="5"/>
+		<Setter Property="MinWidth" Value="90"/>
+		<Setter Property="MinHeight" Value="30" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Button}">
+					<Border Background="{TemplateBinding Background}">
+						<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="BorderBrush" Value="#FFA2FF00"/>
+				<Setter Property="BorderThickness" Value="2"/>
+				<Setter Property="Background" Value="Black"/>
+			</Trigger>
+		</Style.Triggers>
 	</Style>
 
 	<Style x:Key="ICHeader" TargetType="TextBlock">
-		<Setter Property="FontSize" Value="36"></Setter>
+		<Setter Property="FontSize" Value="36" />
+		<Setter Property="FontFamily" Value="Arial"/>
+		<Setter Property="Foreground" Value="{StaticResource TextColorAlt}"></Setter>
 	</Style>
 
 	<!-- ListView -->

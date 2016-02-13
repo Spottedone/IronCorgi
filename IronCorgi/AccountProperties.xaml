@@ -1,8 +1,18 @@
 ﻿<Window x:Class="IronCorgi.AccountProperties"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	Height="300" Width="300">
-	<Grid>
+	Height="300" Width="400"
+		BorderThickness="2"
+		BorderBrush="Gray" 
+		WindowStyle="None"
+		WindowStartupLocation="CenterOwner" 
+		SizeToContent="WidthAndHeight" 
+		ResizeMode="NoResize" 
+		ShowInTaskbar="False"
+		Background="{StaticResource Background}"
+		DataContext="{Binding Source={StaticResource Locator}, Path=CreateAccountData}"
+		x:Name="AddAccountWindow">
+	<Grid Margin="20">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width=".3*"/>
 			<ColumnDefinition Width="auto"/>
@@ -16,11 +26,32 @@
 			<RowDefinition Height="auto"/>
 			<RowDefinition Height="auto"/>
 			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
 			<RowDefinition Height=".3*"/>
 		</Grid.RowDefinitions>
-		<TextBlock Text="Name" Grid.Row="1" Grid.Column="1" Style="{StaticResource ICText}"/>
-		<TextBox Grid.Row="1" Grid.Column="2" MinWidth="200"></TextBox>
-		<TextBlock Text="Address" Grid.Row="2" Grid.Column="1" Style="{StaticResource ICText}" />
-		<TextBox Grid.Row="2" Grid.Column="2" MinWidth="200"></TextBox>
+		<TextBlock Text="Create account" 
+				   Grid.Column="0"
+				   Grid.Row="0"
+				   Grid.ColumnSpan="3"
+				   Style="{StaticResource ICHeader}"/>
+		<TextBlock Text="Name:" Grid.Row="1" Grid.Column="1" Style="{StaticResource ICText}" VerticalAlignment="Center"/>
+		<TextBox Grid.Row="1" Grid.Column="2" MinWidth="200" Style="{StaticResource ICTextBox}" Text="{Binding Path=UserName, Mode=TwoWay}"/>
+		<TextBlock Text="Address:" Grid.Row="2" Grid.Column="1" Style="{StaticResource ICText}" VerticalAlignment="Center"/>
+		<TextBox Grid.Row="2" Grid.Column="2" MinWidth="200" Style="{StaticResource ICTextBox}" Text="{Binding Path=EmailAddress, Mode=TwoWay}"/>
+		<TextBlock Text="Password:" Grid.Row="3" Grid.Column="1" Style="{StaticResource ICText}" VerticalAlignment="Center"/>
+		<TextBox Grid.Row="3" Grid.Column="2" MinWidth="200" Style="{StaticResource ICTextBox}" Text="{Binding Path=Password, Mode=TwoWay}"/>
+		<StackPanel Grid.Row="4" Grid.Column="2" Orientation="Horizontal">
+			<Button Style="{StaticResource ICDialogButton}" 
+					Command="{Binding AddAccountCommand}"
+					CommandParameter="{Binding ElementName=AddAccountWindow}">
+				<TextBlock Text="CREATE"></TextBlock>
+			</Button>
+			<Button Style="{StaticResource ICDialogButton}" 
+					Command="{Binding CancelCommand}"
+					CommandParameter="{Binding ElementName=AddAccountWindow}">
+				<TextBlock Text="CANCEL"></TextBlock>
+			</Button>
+		</StackPanel>
 	</Grid>
 </Window>
