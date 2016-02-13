@@ -14,9 +14,9 @@ namespace IronCorgi
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class AccountProperties: Window
 	{
-		public MainWindow()
+		public AccountProperties()
 		{
 			InitializeComponent();
 		}

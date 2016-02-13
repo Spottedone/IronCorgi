@@ -1,8 +1,7 @@
-﻿<Window x:Class="IronCorgi.Window1"
+﻿<Window x:Class="IronCorgi.MainWindow"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	Title="IronCorgi" Height="300" Width="300"
-	>
+	Title="IronCorgi" Height="300" Width="300">
 	<Grid>
 		
 	</Grid>

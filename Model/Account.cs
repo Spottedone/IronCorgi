@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace IronCorgi.Model
+﻿namespace IronCorgi.Model
 {
 	/// <summary>
-	/// A representation for mail account data. 
+	/// A representation for mail account data.
 	/// </summary>
 	public class Account
 	{
@@ -13,7 +11,12 @@ namespace IronCorgi.Model
 		public string Password { get; set; }
 		public int Port { get; set; }
 		public bool UseSSL { get; set; }
-		
+
+		public Account()
+		{
+
+		}
+
 		public Account(string name, string server, string login, string password, int port, bool useSSL = true)
 		{
 			Name = name;
